@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body>
+    <script>
+        const requestUrl = 'https://api.github.com/users/satyam2209';     // my github account API
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', requestUrl)
+        xhr.onreadystatechange = function(){
+            // console.log(xhr.readyState);
+            if(xhr.readyState === 4){
+                // console.log(this.responseText);
+                // const data = this.responseText;
+                // console.log(typeof data);   // string type
+                // console.log(data.followers); //   this gives undefined 
+
+                const data = JSON.parse(this.responseText);
+                console.log(typeof data);   // object type
+                // then we print the value
+                console.log(data.followers);
+                console.log(data.login);
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>
